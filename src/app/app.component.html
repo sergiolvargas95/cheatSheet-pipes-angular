@@ -10,6 +10,7 @@
           <th> Variable </th>
           <th> Pipe </th>
           <th> Salida </th>
+          <th> opciones </th>
         </tr>
       </thead>
       <tbody>
@@ -113,6 +114,41 @@
           <td> date:'MMMM - dd' </td>
           <td> {{ fecha | date:'MMMM - dd' }}</td>
         </tr>
+        <tr>
+          <td> {{ fecha }}</td>
+          <td> date:'MMMM - dd':'':'en' </td>
+          <td> {{ fecha | date:'MMMM - dd':'':'en' }}</td>
+        </tr>
+        <tr>
+          <td> {{ fecha }}</td>
+          <td> date:'MMMM - dd':'':'fr' </td>
+          <td> {{ fecha | date:'MMMM - dd':'':'fr' }}</td>
+        </tr>
+        <tr>
+          <td> {{ fecha }}</td>
+          <td> date:'MMMM - dd':'':'{{ idioma }}' </td>
+          <td> {{ fecha | date:'MMMM - dd':'': idioma }}</td>
+          <button (click)="idioma='en'" class="mr-1 btn btn-outline-primary">Inglés</button>
+          <button (click)="idioma='fr'" class="mr-1 btn btn-outline-secondary">Francés</button>
+          <button (click)="idioma='es'" class="mr-1 btn btn-outline-success">Español</button>
+        </tr>
+
+        <tr>
+          <td> {{ nombre2 }}</td>
+          <td> pipe personalizado: Capitalizado </td>
+          <td> {{ nombre2 | capitalizado: true }}</td>
+        </tr>
+        <tr>
+          <td> {{ nombre }}</td>
+          <td>
+            contrasena:{{ activar }}
+          <br>
+          <button (click)="activar = !activar" class="btn btn-outline-primary">
+            Activar/Desactivar
+          </button>
+          </td>
+          <td> {{ nombre | password: activar }}</td>
+        </tr>
       </tbody>
     </table>
     <h3>Slice</h3>
@@ -128,5 +164,20 @@
         </pre>
       </div>
     </div>
+  </div>
+</div>
+
+<h3 class="mt-4">Dom Seguro</h3>
+<hr>
+<div class="row mb-5">
+  <div class="col">
+    <iframe width="560"
+            height="315"
+            [src]="videoUrl | domseguro"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+    </iframe>
   </div>
 </div>
